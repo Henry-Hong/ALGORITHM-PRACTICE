@@ -3,26 +3,24 @@
 #include <string>
 using namespace std;
 
-struct mycmp {
-    bool operator() (string s1, string s2) {
-        return s1.length() > s2.length(); 
-    }
-};
+void partition(int &a){
+    a = 100;
+}
+
+void func2(int &a){
+    a = 200;
+}
 
 int main() {
     int n;
     cin >> n;
 
-    priority_queue<string, vector<string>, mycmp> pq;
-    for (int i = 0; i < n; i++) {
-        string x; cin >> x;
-        pq.push(x);
-    }
+    int a;
+    cout << "a: " << a << "\n";
+    partition(a);
+    cout << "a: " << a << "\n";
+    func2(a);
+    cout << "a: " << a << "\n";
 
-    while (!pq.empty()) {
-        cout << pq.top() << " ";
-        pq.pop();
-    }
-    cout << endl;
-
+    return 0;
 }

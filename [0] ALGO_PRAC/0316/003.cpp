@@ -20,12 +20,46 @@ void partition(int low, int high, int &pivotpoint)
     swap(S[low], S[pivotpoint]);
 }
 
+// how to set pivot point.
+// ex) left, rigth 중 더 큰값을 pivot으로 하는 quickSort를 작성하시오.
+int partition_left(int low, int high){
+    int pivotV = S[low];
+    int j = low;
+    for(int i = low + 1; i <= high; i++)
+        if(S[i] < pivotV) 
+            swap(S[++j], S[i]);
+    swap(S[j], S[low]);
+    return j;
+}
+
+// 역방향
+int partition_right(int low, int high){
+    int pivotV = S[high];
+    int j = low;
+    for(int i=low; i<high; i++){
+        if(S[i] > pivotV){
+            swap(S[j++], S[i]);
+        }
+    }
+    swap(S[j], S[high]);
+    return j;
+}
+
+int partition_mid(int low, int high){
+
+    int mid = low + (high - low) / 2;
+    
+
+}
+
 void quickSort(int low, int high)
 {
     int pivotpoint;
     if (low < high)
     {
-        partition(low, high, pivotpoint);
+        // partition(low, high, pivotpoint);
+        // pivotpoint = partition_right(low, high);
+        pivotpoint = partition_left(low,high);
         quickSort(low, pivotpoint - 1);
         quickSort(pivotpoint + 1, high);
     }
